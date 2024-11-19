@@ -2,12 +2,12 @@ public class MarsRover {
 
     private String INITIAL_STATE = "0:0:N";
 
-    private String direction;
+    private Direction direction;
 
     private String state;
 
     MarsRover() {
-        this.direction = "N";
+        this.direction = Direction.NORTH;
         this.state = INITIAL_STATE;
     }
 
@@ -17,50 +17,22 @@ public class MarsRover {
 
     public String turnLeft() {
         switch (direction) {
-            case "N" -> {
-                direction = "W";
-                return "0:0:" + direction;
-            }
-            case "W" -> {
-                direction = "S";
-                return "0:0:" + direction;
-            }
-            case "S" -> {
-                direction = "E";
-                return "0:0:" + direction;
-            }
-            case "E" -> {
-                direction = "N";
-                return "0:0:" + direction;
-            }
-            default -> {
-                return null;
-            }
+            case NORTH -> direction = Direction.WEST;
+            case WEST ->  direction = Direction.SOUTH;
+            case SOUTH -> direction = Direction.EAST;
+            case EAST -> direction = Direction.NORTH;
         }
+        return "0:0:" + direction.getDirection();
     }
 
     public String turnRight() {
         switch (direction) {
-            case "N" -> {
-                direction = "E";
-                return "0:0:" + direction;
-            }
-            case "E" -> {
-                direction = "S";
-                return "0:0:" + direction;
-            }
-            case "S" -> {
-                direction = "W";
-                return "0:0:" + direction;
-            }
-            case "W" -> {
-                direction = "N";
-                return "0:0:" + direction;
-            }
-            default -> {
-                return null;
-            }
+            case NORTH -> direction = Direction.EAST;
+            case EAST -> direction = Direction.SOUTH;
+            case SOUTH -> direction = Direction.WEST;
+            case WEST -> direction = Direction.NORTH;
         }
+        return "0:0:" + direction.getDirection();
     }
 
     public String executeCommand(String command) {
