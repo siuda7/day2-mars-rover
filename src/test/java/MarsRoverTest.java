@@ -47,8 +47,7 @@ public class MarsRoverTest {
     public void should_south_when_orient_west_and_turn_left() {
 
         //Given
-        MarsRover rover = new MarsRover();
-        rover.executeCommand("L");
+        MarsRover rover = new MarsRover(Direction.WEST);
 
         // When
         String report = rover.executeCommand("L");
@@ -61,8 +60,7 @@ public class MarsRoverTest {
     public void should_north_when_orient_west_and_turn_right() {
 
         //Given
-        MarsRover rover = new MarsRover();
-        rover.executeCommand("L");
+        MarsRover rover = new MarsRover(Direction.WEST);
 
         // When
         String report = rover.executeCommand("R");
@@ -74,8 +72,7 @@ public class MarsRoverTest {
     @Test void should_south_when_orient_east_and_turn_right() {
 
         //Given
-        MarsRover rover = new MarsRover();
-        rover.executeCommand("R");
+        MarsRover rover = new MarsRover(Direction.EAST);
 
         // When
         String report = rover.executeCommand("R");
@@ -87,8 +84,7 @@ public class MarsRoverTest {
     @Test void should_north_when_orient_east_and_turn_left() {
 
         //Given
-        MarsRover rover = new MarsRover();
-        rover.executeCommand("R");
+        MarsRover rover = new MarsRover(Direction.EAST);
 
         // When
         String report = rover.executeCommand("L");
@@ -100,9 +96,7 @@ public class MarsRoverTest {
     @Test void should_east_when_orient_south_and_turn_left() {
 
         //Given
-        MarsRover rover = new MarsRover();
-        rover.executeCommand("R");
-        rover.executeCommand("R");
+        MarsRover rover = new MarsRover(Direction.SOUTH);
 
         // When
         String report = rover.executeCommand("L");
@@ -114,15 +108,25 @@ public class MarsRoverTest {
     @Test void should_west_when_orient_south_and_turn_right() {
 
         //Given
-        MarsRover rover = new MarsRover();
-        rover.executeCommand("R");
-        rover.executeCommand("R");
+        MarsRover rover = new MarsRover(Direction.SOUTH);
 
         // When
         String report = rover.executeCommand("R");
 
         // Then
         assertEquals("0:0:W", report);
+    }
+
+    @Test void should_01N_when_orient_north_and_move_forward() {
+
+        //Given
+        MarsRover rover = new MarsRover();
+
+        // When
+        String report = rover.executeCommand("M");
+
+        // Then
+        assertEquals("0:1:N", report);
     }
 
 
