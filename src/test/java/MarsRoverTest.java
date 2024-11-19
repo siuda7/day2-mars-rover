@@ -165,5 +165,16 @@ public class MarsRoverTest {
         assertEquals("-1:0:W", report);
     }
 
+    @Test void should_0negative1N_when_orient_north_and_move_backward() {
+        //Given
+        MarsRover rover = new MarsRover(Direction.NORTH);
+
+        // When
+        String report = rover.executeCommand("B");
+
+        // Then
+        assertEquals("0:-1:N", report);
+    }
+
 
 }
