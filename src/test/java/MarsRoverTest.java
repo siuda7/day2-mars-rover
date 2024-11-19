@@ -176,5 +176,41 @@ public class MarsRoverTest {
         assertEquals("0:-1:N", report);
     }
 
+    @Test void should_01S_when_orient_south_and_move_backward() {
+
+        //Given
+        MarsRover rover = new MarsRover(Direction.SOUTH);
+
+        // When
+        String report = rover.executeCommand("B");
+
+        // Then
+        assertEquals("0:1:S", report);
+    }
+
+    @Test void should_negative1_0E_when_orient_east_and_move_backward() {
+
+        //Given
+        MarsRover rover = new MarsRover(Direction.EAST);
+
+        // When
+        String report = rover.executeCommand("B");
+
+        // Then
+        assertEquals("-1:0:E", report);
+    }
+
+    @Test void should_1_0W_when_orient_west_and_move_backward() {
+
+        //Given
+        MarsRover rover = new MarsRover(Direction.WEST);
+
+        // When
+        String report = rover.executeCommand("B");
+
+        // Then
+        assertEquals("1:0:W", report);
+    }
+
 
 }
