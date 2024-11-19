@@ -16,37 +16,51 @@ public class MarsRover {
     }
 
     public String turnLeft() {
-        if (direction.equals("N")) {
-            direction = "W";
-            return "0:0:" + direction;
-        } else if (direction.equals("W")) {
-            direction = "S";
-            return "0:0:" + direction;
-        } else if (direction.equals("S")){
-            direction = "E";
-            return "0:0:" + direction;
-        } else if (direction.equals("E")) {
-            direction = "N";
-            return "0:0:" + direction;
+        switch (direction) {
+            case "N" -> {
+                direction = "W";
+                return "0:0:" + direction;
+            }
+            case "W" -> {
+                direction = "S";
+                return "0:0:" + direction;
+            }
+            case "S" -> {
+                direction = "E";
+                return "0:0:" + direction;
+            }
+            case "E" -> {
+                direction = "N";
+                return "0:0:" + direction;
+            }
+            default -> {
+                return null;
+            }
         }
-        return null;
     }
 
     public String turnRight() {
-        if (direction.equals("N")) {
-            direction = "E";
-            return "0:0:" + direction;
-        } else if (direction.equals("E")) {
-            direction = "S";
-            return "0:0:" + direction;
-        } else if (direction.equals("S")) {
-            direction = "W";
-            return "0:0:" + direction;
-        } else if (direction.equals("W")) {
-            direction = "N";
-            return "0:0:" + direction;
+        switch (direction) {
+            case "N" -> {
+                direction = "E";
+                return "0:0:" + direction;
+            }
+            case "E" -> {
+                direction = "S";
+                return "0:0:" + direction;
+            }
+            case "S" -> {
+                direction = "W";
+                return "0:0:" + direction;
+            }
+            case "W" -> {
+                direction = "N";
+                return "0:0:" + direction;
+            }
+            default -> {
+                return null;
+            }
         }
-        return null;
     }
 
     public String executeCommand(String command) {
