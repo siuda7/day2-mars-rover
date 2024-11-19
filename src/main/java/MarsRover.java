@@ -36,12 +36,13 @@ public class MarsRover {
         return generateStatusString();
     }
 
-    public String moveForward() {
+    public String move(String moveCommand) {
+        int step = moveCommand.equals("M") ? 1 : -1;
         switch (direction) {
-            case NORTH -> yCoordinate++;
-            case EAST -> xCoordinate++;
-            case SOUTH -> yCoordinate--;
-            case WEST -> xCoordinate--;
+            case NORTH -> yCoordinate += step;
+            case EAST -> xCoordinate += step;
+            case SOUTH -> yCoordinate -= step;
+            case WEST -> xCoordinate -= step;
         }
         return generateStatusString();
     }
@@ -57,7 +58,7 @@ public class MarsRover {
         } else if (command.equals("R")) {
             return turnRight();
         } else {
-            return moveForward();
+            return move(command);
         }
     }
 }
