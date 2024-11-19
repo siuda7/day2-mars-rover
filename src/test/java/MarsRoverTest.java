@@ -129,5 +129,29 @@ public class MarsRoverTest {
         assertEquals("0:1:N", report);
     }
 
+    @Test void should_0negative1S_when_orient_south_and_move_forward() {
+
+        //Given
+        MarsRover rover = new MarsRover(Direction.SOUTH);
+
+        // When
+        String report = rover.executeCommand("M");
+
+        // Then
+        assertEquals("0:-1:S", report);
+    }
+
+    @Test void should_1_0E_when_orient_east_and_move_forward() {
+
+        //Given
+        MarsRover rover = new MarsRover(Direction.EAST);
+
+        // When
+        String report = rover.executeCommand("M");
+
+        // Then
+        assertEquals("1:0:E", report);
+    }
+
 
 }
