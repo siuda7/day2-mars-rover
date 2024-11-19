@@ -1,22 +1,19 @@
 public class MarsRover {
 
-    private String INITIAL_STATE = "0:0:N";
-
     private Direction direction = Direction.NORTH;
 
-    private String state;
+    private Integer xCoordinate = 0;
+
+    private Integer yCoordinate = 0;
 
     MarsRover(Direction direction) {
         this.direction = direction;
-        this.state = INITIAL_STATE;
     }
 
-    MarsRover() {
-        this.state = INITIAL_STATE;
-    }
+    MarsRover() {}
 
     public String showStatus() {
-        return state;
+        return generateStatusString();
     }
 
     public String turnLeft() {
@@ -26,7 +23,7 @@ public class MarsRover {
             case SOUTH -> direction = Direction.EAST;
             case EAST -> direction = Direction.NORTH;
         }
-        return "0:0:" + direction.getDirection();
+        return generateStatusString();
     }
 
     public String turnRight() {
@@ -36,27 +33,21 @@ public class MarsRover {
             case SOUTH -> direction = Direction.WEST;
             case WEST -> direction = Direction.NORTH;
         }
-        return "0:0:" + direction.getDirection();
+        return generateStatusString();
     }
 
     public String moveForward() {
         switch (direction) {
-            case NORTH -> {
-                return "0:1:N";
-            }
-            case EAST -> {
-                return "1:0:E";
-            }
-            case SOUTH -> {
-                return "0:-1:S";
-            }
-            case WEST -> {
-                return "-1:0:W";
-            }
-            default -> {
-                return null;
-            }
+            case NORTH -> yCoordinate++;
+            case EAST -> xCoordinate++;
+            case SOUTH -> yCoordinate--;
+            case WEST -> xCoordinate--;
         }
+        return generateStatusString();
+    }
+
+    private String generateStatusString() {
+        return String.format("%d:%d:%c", xCoordinate, yCoordinate, direction.getDirection());
     }
 
     public String executeCommand(String command) {
